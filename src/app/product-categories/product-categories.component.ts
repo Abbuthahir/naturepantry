@@ -19,7 +19,6 @@ export class ProductCategoriesComponent extends BasePage {
       (response: any) => {
         console.log(response);
         this.products = response.data.filter((element: any) => element.category === converting);
-        console.log('category', converting);
         this.cdr.markForCheck();
       }
     );
