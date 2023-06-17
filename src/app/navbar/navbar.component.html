@@ -1,0 +1,48 @@
+<!-- <nav class="navbar navbar-expand" style="background-color: rgba(8, 161, 8, 0.281);">
+    <div class="container-fluid">
+        <a class="navbar-brand" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><b>Nature's
+                Pantry</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample">Categories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Feedback</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search">
+                <button class="btn btn-outline-success mx-2" type="button" routerLink="/admin">Admin</button>
+                <button class="btn btn-outline-success mx-2" type="button" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" routerLink="">Log Out</button>
+                
+            </form>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title mt-5" id="offcanvasExampleLabel" style="color:rgb(191, 202, 34);font-weight: bolder;
+        font-size: xx-large;text-shadow: 5px 3px 3px rgba(0, 0, 0, 0.5);">Product
+            Categories</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <hr>
+    <div class="offcanvas-body" style="font-size: x-large;">
+        <ul class="bulletin mt-5 " style="font-weight: bolder;">
+            <li class=""*ngFor="let type of types" (click)="goCategory(type.category)">{{type.category}}</li>
+        </ul>
+    </div>
+</div>
+
+ -->

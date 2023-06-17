@@ -7,11 +7,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="current?.data === 'home'">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item" *ngIf="current?.admin !== 'admin'">
                     <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample">Categories</a>
                 </li>
                 <li class="nav-item">
@@ -19,25 +16,23 @@
                 </li>
             </ul>
             <div>
-                <button class="btn btn-outline-success mx-2"
-                    *ngIf="current?.data === 'home' && current?.admin !== 'admin'" type="button"
-                    routerLink="/admin">Admin</button>
-                <button class="btn btn-outline-success mx-2"  *ngIf="current?.data === 'home' && current?.admin !== 'admin'"
-                type="button" (click)="current.data = ''" routerLink="">Log Out</button>
-                {{log(current.data)}}
-            </div>
-            <div *ngIf="current?.admin === 'admin'">
                 <!-- Modal for add item -->
                 <button class="btn btn-outline-success mx-2" type="button" data-bs-toggle="modal"
                     data-bs-target="#additemModal">Add Item</button>
-                <button class="btn btn-outline-success mx-2" type="button" (click)="current.admin = ''; current.data = '' " routerLink="">Log Out</button>
             </div>
             <div>
-                
+
             </div>
         </div>
     </div>
 </nav>
+<div class="card">
+    <div class="card-body" appBgColor>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magni molestias eos fugit ratione vero? Et totam
+        temporibus voluptatem corporis, modi dignissimos dicta quisquam similique, optio voluptate, soluta quidem
+        voluptas!
+    </div>
+</div>
 <!-- Modal for adding item -->
 <div class="modal fade" id="additemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -124,7 +119,23 @@
         </ul>
     </div>
 </div>
-
-
+<div class="container">
+    <div class="row" *ngIf="products.length">
+        <div class="col col-md-4 d-flex justify-content-center align-items-center" *ngFor="let product of products">
+            <div class="card shadow mx-5 mt-5" style="width: 18rem;">
+                <div class="card-body text-center">
+                    <h3 style="text-align:center; font-family:Arial, Helvetica, sans-serif; font-style: italic;"><b>
+                            {{product.Name}}</b></h3>
+                    <img [src]="product.imageurl" class="card-img-top" alt="..." height="400px" width="200px"
+                        style="object-fit: contain;">
+                    <p class="text-center"><em>{{product.price}}</em></p>
+                    <div>{{product.id}}</div>
+                    <a class="btn btn-primary mx-2">Buy Now</a>
+                    <a class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <router-outlet></router-outlet>

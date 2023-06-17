@@ -1,0 +1,14 @@
+ul.bulletin {
+    list-style-type: none;
+  }
+  
+  ul.bulletin li::before {
+    content: "\2713";
+    color: rgb(191,202,34);
+    margin-right: 8px;
+  }
+
+  .category{
+   cursor: pointer;
+  }
+  

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand" style="background-color: rgba(8, 161, 8, 0.281);">
+<!-- <nav class="navbar navbar-expand" style="background-color: rgba(8, 161, 8, 0.281);">
     <div class="container-fluid">
         <a class="navbar-brand" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><b>Nature's
                 Pantry</b></a>
@@ -7,39 +7,24 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="current?.data === 'home'">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
-                <li class="nav-item" *ngIf="current?.admin !== 'admin'">
-                    <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Feedback</a>
-                </li>
             </ul>
-            <div>
-                <button class="btn btn-outline-success mx-2"
-                    *ngIf="current?.data === 'home' && current?.admin !== 'admin'" type="button"
-                    routerLink="/admin">Admin</button>
-                <button class="btn btn-outline-success mx-2"  *ngIf="current?.data === 'home' && current?.admin !== 'admin'"
-                type="button" (click)="current.data = ''" routerLink="">Log Out</button>
-                {{log(current.data)}}
-            </div>
-            <div *ngIf="current?.admin === 'admin'">
-                <!-- Modal for add item -->
+            <form class="d-flex" role="search">
                 <button class="btn btn-outline-success mx-2" type="button" data-bs-toggle="modal"
                     data-bs-target="#additemModal">Add Item</button>
-                <button class="btn btn-outline-success mx-2" type="button" (click)="current.admin = ''; current.data = '' " routerLink="">Log Out</button>
-            </div>
-            <div>
-                
-            </div>
+                <button class="btn btn-outline-success mx-2" type="button" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" routerLink="">Log Out</button>
+
+            </form>
         </div>
     </div>
-</nav>
-<!-- Modal for adding item -->
-<div class="modal fade" id="additemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</nav> -->
+
+<!-- modal -->
+<!-- <div class="modal fade" id="additemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -67,20 +52,20 @@
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="Name" class="form-label">Product Name</label>
+                            <label for="name" class="form-label">Product Name</label>
                             <input
-                                [ngClass]="{'is-invalid':additemForm.controls['Name'].invalid && additemForm.controls['Name'].touched}"
-                                type="text" class="form-control" id="Name" formControlName="Name"
+                                [ngClass]="{'is-invalid':additemForm.controls['name'].invalid && additemForm.controls['name'].touched}"
+                                type="text" class="form-control" id="name" formControlName="name"
                                 placeholder="Enter the product name" required>
                             <div class="invalid-feedback"> Enter the item name</div>
                         </div>
                     </div>
                     <div class="col">
                         <div class="mb-3">
-                            <label for="imageurl" class="form-label">Image</label>
+                            <label for="image" class="form-label">Image</label>
                             <input
-                                [ngClass]="{'is-invalid':additemForm.controls['imageurl'].invalid && additemForm.controls['imageurl'].touched}"
-                                type="text" class="form-control" id="imageurl" formControlName="imageurl"
+                                [ngClass]="{'is-invalid':additemForm.controls['image'].invalid && additemForm.controls['image'].touched}"
+                                type="text" class="form-control" id="image" formControlName="image"
                                 placeholder="Attach the imageUrl" required>
                             <div class="invalid-feedback"> Attach the imageUrl</div>
                         </div>
@@ -96,9 +81,6 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <input type="file" (change)="toUpload($event)">
-                </div>
             </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -106,25 +88,22 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 
-
-<!-- offcanvas for categories option -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title mt-5" id="offcanvasExampleLabel" style="color:rgb(191, 202, 34);font-weight: bolder;
-        font-size: xx-large;text-shadow: 5px 3px 3px rgba(0, 0, 0, 0.5);">Product
-            Categories</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<!-- products from db -->
+<div class="container">
+    <div class="row">
+        <div class="col col-md-4 d-flex justify-content-center align-items-center" *ngFor="let product of products">
+            <div class="card shadow mx-5 mt-5" style="width: 18rem;">
+                <div class="card-body text-center">
+                    <h3 style="text-align:center; font-family:Arial, Helvetica, sans-serif; font-style: italic;"><b>
+                            {{product.Name}}</b></h3>
+                    <img [src]="product.imageurl" class="card-img-top" alt="..."  height="400px" width="200px"
+                    style="object-fit: contain;">
+                    <p class="text-center"><em>{{product.price}}</em></p>
+                    <a class="btn btn-primary mx-2" (click)="toRemove(product.id)">Remove</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <hr>
-    <div class="offcanvas-body" style="font-size: x-large;">
-        <ul class="bulletin mt-5 " style="font-weight: bolder;">
-            <li class="" *ngFor="let type of types" (click)="goCategory(type.category)">{{type.category}}</li>
-        </ul>
-    </div>
 </div>
-
-
-
-<router-outlet></router-outlet>

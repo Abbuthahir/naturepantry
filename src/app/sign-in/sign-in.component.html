@@ -1,0 +1,143 @@
+<div class="row mt-5">
+    <div class="col"></div>
+    <div class="col">
+        <img src="../../assets/natures-pantry-24-hour-comfort-kit.jpg">
+    </div>
+    <div class="col"></div>
+</div>
+<div class="row">
+    <div class="col"></div>
+    <div class="col mx-5">
+        <form class="d-flex mb-3  ml-5 mx-5" role="search">
+            <button class="btn btn-outline-success mx-5" type="button" data-bs-toggle="modal"
+                data-bs-target="#examplelogin">Log In</button>
+            <button class="btn btn-outline-success mx-5" type="button" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">Sign Up</button>
+        </form>
+    </div>
+    <div class="col"></div>
+</div>
+
+<!-- Modal for logging in -->
+<div class="modal fade" id="examplelogin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Log In</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="loginForm">
+                <div class="modal-body">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">User Name</label>
+                            <input
+                                [ngClass]="{'is-invalid':loginForm.controls['username'].invalid && loginForm.controls['username'].touched}"
+                                type="text" class="form-control" id="fnname" formControlName="username"
+                                placeholder="Enter your username" required>
+                            <div class="invalid-feedback"> Enter your UserName</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input
+                                [ngClass]="{'is-invalid':loginForm.controls['password'].invalid && loginForm.controls['password'].touched}"
+                                type="password" class="form-control" id="password" formControlName="password"
+                                placeholder="Enter your password" required>
+                            <div class="invalid-feedback"> Enter your valid Password</div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="navigating()">Log In</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for signing-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Sign Up</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="signupForm">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="fnname" class="form-label">First Name</label>
+                                <input
+                                    [ngClass]="{'is-invalid':signupForm.controls['fnname'].invalid && signupForm.controls['fnname'].touched}"
+                                    type="text" class="form-control" id="fnname" formControlName="fnname"
+                                    placeholder="Enter your First Name" required>
+                                <div class="invalid-feedback"> Enter your Firstname</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="lnname" class="form-label">Last Name</label>
+                                <input
+                                    [ngClass]="{'is-invalid':signupForm.controls['lnname'].invalid && signupForm.controls['lnname'].touched}"
+                                    type="text" class="form-control" id="lnname" formControlName="lnname"
+                                    placeholder="Enter your username" required>
+                                <div class="invalid-feedback"> Enter your Lastname</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="gender" class="form-label">Gender</label>
+                                <!-- <input type="text" class="form-control" id="gender" placeholder="Enter your username"> -->
+                                <select class="form-select"
+                                    [ngClass]="{'is-invalid':signupForm.controls['gender'].invalid && signupForm.controls['gender'].touched}"
+                                    id="gender" formControlName="gender" aria-label="Select Gender" required>
+                                    <option selected disabled>Select Gender</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                                <div class="invalid-feedback"> Enter your Gender</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label for="dob" class="form-label">Date of Birth</label>
+                                <input
+                                    [ngClass]="{'is-invalid':signupForm.controls['dob'].invalid && signupForm.controls['dob'].touched}"
+                                    type="date" class="form-control" id="dob" formControlName="dob"
+                                    placeholder="Enter your date of birth" required>
+                                <div class="invalid-feedback"> Enter your Date of Birth</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="usernameInput" class="form-label">Username</label>
+                        <input
+                            [ngClass]="{'is-invalid':signupForm.controls['usernameInput'].invalid && signupForm.controls['usernameInput'].touched}"
+                            type="text" class="form-control" id="usernameInput" formControlName="usernameInput"
+                            placeholder="Enter your username" required>
+                        <div class="invalid-feedback"> Enter your User Name</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="passwordInput" class="form-label">Password</label>
+                        <input
+                            [ngClass]="{'is-invalid':signupForm.controls['passwordInput'].invalid && signupForm.controls['passwordInput'].touched}"
+                            type="password" class="form-control" id="passwordInput" formControlName="passwordInput"
+                            placeholder="Enter your password" required>
+                        <div class="invalid-feedback"> Enter your Password</div>
+                    </div>
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="signing()">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
