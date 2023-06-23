@@ -1,24 +1,39 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { BasePage } from './core/base-page';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class DataService {
-  constructor(private http: HttpClient) { }
+export class DataService extends BasePage {
+   serviceCurrent: any ;
+   adminData: any;
+   cartData: any[]= [];
 
-  getProgrammingLanguages(): Observable<any> {
-    return this.http.get('http://localhost:3000/programming-languages');
+  constructor(private http: HttpClient) { 
+    super();
+  }
+
+  getProgrammingLanguages(category: any): Observable<any> {
+    return this.http.get(`http://localhost:3001/programming-languages?category=${category}`, category);
   }
   createProduct(data: any) {
     console.log('post', data);
 
-    return this.http.post('http://localhost:3000/programming-languages', data)
+    return this.http.post('http://localhost:3001/programming-languages', data)
   }
   removeProduct(id: Number){
-    return this.http.delete(`http://localhost:3000/programming-languages/${id}`)
+    return this.http.delete(`http://localhost:3001/programming-languages/${id}`)
   }
+  addCart(product: any){
+     let carts = JSON.stringify(product);
+     localStorage.setItem('cart', carts);
+  }
+  getCart(){
+    let cart: any = localStorage.getItem('cart');
+    return JSON.parse(cart);
 
+  }
 }

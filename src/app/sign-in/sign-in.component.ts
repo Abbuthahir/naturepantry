@@ -3,6 +3,7 @@ import { Route, Router } from '@angular/router';
 import { DataService } from '../data.service';
 import {  OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { BasePage } from '../core/base-page';
 
 declare var $ : any;
 
@@ -12,12 +13,15 @@ declare var $ : any;
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.scss']
 })
-export class SignInComponent {
+export class SignInComponent extends BasePage {
   loginForm: FormGroup;
   signupForm: FormGroup;
   products: any = [];
   constructor(private homeService: DataService, public router: Router) { 
-    this.homeService.getProgrammingLanguages().subscribe(
+    super();
+    this.current.signin = 'signin';
+    this.current.admin = '';
+    this.homeService.getProgrammingLanguages('').subscribe(
       (response: any) => {
         console.log(response);
         this.products = this.products.concat(response.data);
@@ -40,9 +44,10 @@ export class SignInComponent {
   }
 
   navigating(){
+    this.current.nav = true;
     if(this.loginForm.valid){
-    $('#examplelogin').modal('hide');
-    this.router.navigate(['/home'])
+      $('#examplelogin').modal('hide');
+      this.router.navigate(['/home'])
     }else{
       alert("Please enter all the fields");
     }
@@ -51,7 +56,7 @@ export class SignInComponent {
   signing(){
     if(this.signupForm.valid){
       $('#exampleModal').modal('hide');
-      this.router.navigate(['#examplelogin'])
+      // this.router.navigate(['#examplelogin'])
     }else{
       alert("Please fill all the required fields");
     }

@@ -1,114 +1,30 @@
-<nav class="navbar navbar-expand" style="background-color: rgba(8, 161, 8, 0.281);">
+<nav class="navbar navbar-expand" style="background-color: rgba(8, 161, 8, 0.281);"
+    *ngIf="current.nav === true">
     <div class="container-fluid">
         <a class="navbar-brand" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><b>Nature's
                 Pantry</b></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="current?.data === 'home'">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#" routerLink="/home">Home</a>
                 </li>
-                <li class="nav-item" *ngIf="current?.admin !== 'admin'">
-                    <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample">Categories</a>
+                <li class="nav-item" *ngIf="current.data === 'home'">
+                    <a class="nav-link" (click)="showOffcanvas()">Categories</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" routerLink="/feedback">Feedback</a>
                 </li>
             </ul>
             <div>
-                <button class="btn btn-outline-success mx-2"
-                    *ngIf="current?.data === 'home' && current?.admin !== 'admin'" type="button"
-                    routerLink="/admin">Admin</button>
-                <button class="btn btn-outline-success mx-2"  *ngIf="current?.data === 'home' && current?.admin !== 'admin'"
-                type="button" (click)="current.data = ''" routerLink="">Log Out</button>
-                {{log(current.data)}}
-            </div>
-            <div *ngIf="current?.admin === 'admin'">
-                <!-- Modal for add item -->
-                <button class="btn btn-outline-success mx-2" type="button" data-bs-toggle="modal"
-                    data-bs-target="#additemModal">Add Item</button>
-                <button class="btn btn-outline-success mx-2" type="button" (click)="current.admin = ''; current.data = '' " routerLink="">Log Out</button>
-            </div>
-            <div>
-                
+                <button class="btn btn-outline-success mx-2" type="button" *ngIf="current?.data === 'home'"
+                    (click)="current.admin = ''; current.data = ''; current.nav = true " routerLink="cart/:id">Cart</button>
+                <button class="btn btn-outline-success mx-2" *ngIf="current?.data === 'home'" type="button"
+                    (click)="current.data = ''; current.nav = false" routerLink="">Log Out</button>
+                <!-- {{log(current.data)}} -->
             </div>
         </div>
     </div>
 </nav>
-<!-- Modal for adding item -->
-<div class="modal fade" id="additemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Log In</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form [formGroup]="additemForm">
-                <div class="modal-body">
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="category" class="form-label">Category</label>
-                            <select class="form-select"
-                                [ngClass]="{'is-invalid':additemForm.controls['category'].invalid && additemForm.controls['category'].touched}"
-                                id="category" formControlName="category" aria-label="Select Category" required>
-                                <option selected disabled>Select Category</option>
-                                <option value="fruit">Fruit</option>
-                                <option value="vegetable">Vegetable</option>
-                                <option value="diary">Diary</option>
-                                <option value="Baked goods">Baked goods</option>
-                                <option value="Meat">Meat</option>
-                                <option value="herbs">Herbs</option>
-                            </select>
-                            <div class="invalid-feedback">Select the category</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="Name" class="form-label">Product Name</label>
-                            <input
-                                [ngClass]="{'is-invalid':additemForm.controls['Name'].invalid && additemForm.controls['Name'].touched}"
-                                type="text" class="form-control" id="Name" formControlName="Name"
-                                placeholder="Enter the product name" required>
-                            <div class="invalid-feedback"> Enter the item name</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="imageurl" class="form-label">Image</label>
-                            <input
-                                [ngClass]="{'is-invalid':additemForm.controls['imageurl'].invalid && additemForm.controls['imageurl'].touched}"
-                                type="text" class="form-control" id="imageurl" formControlName="imageurl"
-                                placeholder="Attach the imageUrl" required>
-                            <div class="invalid-feedback"> Attach the imageUrl</div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label for="price" class="form-label">Price</label>
-                            <input
-                                [ngClass]="{'is-invalid':additemForm.controls['price'].invalid && additemForm.controls['price'].touched}"
-                                type="text" class="form-control" id="price" formControlName="price"
-                                placeholder="Enter the price" required>
-                            <div class="invalid-feedback"> Enter the price</div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <input type="file" (change)="toUpload($event)">
-                </div>
-            </form>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="toAddItem()">Add</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 <!-- offcanvas for categories option -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
@@ -120,11 +36,14 @@
     <hr>
     <div class="offcanvas-body" style="font-size: x-large;">
         <ul class="bulletin mt-5 " style="font-weight: bolder;">
-            <li class="" *ngFor="let type of types" (click)="goCategory(type.category)">{{type.category}}</li>
+            <li class="" *ngFor="let type of types" (click)="goCategory(type.value)">{{type.category}}</li>
         </ul>
     </div>
 </div>
-
-
-
+<!-- <div>
+    <p [style.color]="changeColor ? 'red' : ''" (click)="changeColor=true">Date and Time: {{ '19-06-2023' |
+        currentDateTime
+        }}</p>
+</div> -->
+<!-- Button trigger modal -->
 <router-outlet></router-outlet>

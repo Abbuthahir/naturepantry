@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-9">
+            <div class="row">
+                <div class="col col-md-4 d-flex justify-content-center align-items-center"
+                    *ngFor="let cart of homeService.cartData">
+                    <div class="card shadow mx-5 mt-5" style="width: 18rem;">
+                        <div class="card-body text-center">
+                            <h3
+                                style="text-align:center; font-family:Arial, Helvetica, sans-serif; font-style: italic;">
+                                <b>
+                                    {{cart.Name}}</b>
+                            </h3>
+                            <img [src]="cart.imageurl" class="card-img-top" alt="..." height="400px" width="200px"
+                                style="object-fit: contain;">
+                            <p class="text-center"><em>{{cart.price}}</em></p>
+                            <!-- <div>{{cart.id}}</div> -->
+                            <!-- <a class="btn btn-primary mx-2">Buy Now</a>
+                           <a class="btn btn-primary" (click)="addingToCart(cart)">Add to Cart</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">hello</div>
+    </div>
+</div>

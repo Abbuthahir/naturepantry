@@ -10,7 +10,7 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'cart',
+    path: 'cart/:id',
     loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
   },
   {
@@ -18,16 +18,16 @@ const routes: Routes = [
     loadChildren: () => import('./navbar/navbar.module').then(m => m.NavbarModule)
   },
   {
-    path: 'categories',
+    path: 'categories/:id',
     loadChildren: () => import('./product-categories/product-categories.module').then(m => m.ProductCategoriesModule)
   },
-  {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
-  },
+  // {
+  //   path: 'admin',
+  //   loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
+  // },
   {
     path: 'feedback',
-    loadChildren: () => import('./feedback/feedback.modeule').then(m => m.FeedbackModule)
+    loadChildren: () => import('./feedback/feedback.module').then(m => m.FeedbackModule)
   }
  ];
 

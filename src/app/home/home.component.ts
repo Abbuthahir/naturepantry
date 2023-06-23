@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { BasePage } from '../core/base-page';
 import { DataService } from '../data.service';
-declare var $ : any;
+declare var bootstrap : any;
 
 @Component({
   selector: 'app-home',
@@ -19,18 +19,21 @@ export class HomeComponent  extends BasePage implements OnInit {
   //   http.get('http://localhost:3000/programming-languages').subscribe(
   //     (response: any) => {
   //       console.log(response);
-
   //       this.products = this.products.concat(response.data);
   //     })
   // }
-
   // ngOnInit(): void {
   // }
 
   constructor(private homeService: DataService, private router: Router) { 
     super();
+    // this.homeService.serviceCurrent = 'home';
     this.current.data = 'home';
-    this.homeService.getProgrammingLanguages().subscribe(
+    this.current.admin = '';
+    console.log(this.current.admin);
+    this.current.nav = true;
+    console.log('nav', this.current.data);
+    this.homeService.getProgrammingLanguages('').subscribe(
       (response: any) => {
         console.log(response);
         this.products = this.products.concat(response.data);
@@ -39,10 +42,10 @@ export class HomeComponent  extends BasePage implements OnInit {
   }
 
   navigating(){
-    $('#examplelogin').modal('hide');
-    this.router.navigate(['/categories'])
+    const modal = new bootstrap.Modal('#examplelogin')
+    modal.hide();
+    this.router.navigate(['home'])
   }
-
   ngOnInit(): void {
     
   }

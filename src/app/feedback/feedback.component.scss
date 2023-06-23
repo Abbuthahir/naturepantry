@@ -1,0 +1,15 @@
+.custom-button{
+outline: 1px solid rgb(219, 213, 213);
+}
+.emoticon {
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .emoticon.selected {
+    transform: scale(1.2);
+  }
+
+  
+  

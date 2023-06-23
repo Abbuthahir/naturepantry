@@ -2,11 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignInComponent } from './sign-in.component';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DataService } from '../data.service';
 
-const routes: Routes =[{
-  path:'',
+const routes: Routes = [{
+  path: 'sign-in',
   component: SignInComponent
+},
+{
+  path: '',
+  redirectTo: 'sign-in',
+  pathMatch: 'full'
 }]
 
 @NgModule({
@@ -18,6 +24,9 @@ const routes: Routes =[{
     RouterModule.forChild(routes),
     FormsModule, ReactiveFormsModule
 
+  ],
+  providers: [
+    DataService
   ]
 })
 export class SignInModule { }

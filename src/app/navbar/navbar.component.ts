@@ -31,7 +31,7 @@ categories:any =[]
   }
 
   goCategory(category: any){
-    this.homeService.getProgrammingLanguages().subscribe(
+    this.homeService.getProgrammingLanguages('').subscribe(
       (response: any) => {
         console.log(response);
         this.categories = response.data.filter((element: any) => element.category === category);

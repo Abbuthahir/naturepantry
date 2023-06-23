@@ -18,9 +18,12 @@ export class AdminComponent extends BasePage{
 
   constructor(private homeService: DataService) {
     super();
-    this.current.admin='admin';
-    console.log('admin', this.current.admin);
-    this.homeService.getProgrammingLanguages().subscribe(
+    //this.homeService.adminData = 'admin';
+    this.current.admin=this.homeService.adminData ;
+    this.current.nav = true;
+    this.current.data = 'home'
+    console.log('admin', this.current.admin, this.current.nav);
+    this.homeService.getProgrammingLanguages('').subscribe(
       (response: any) => {
         console.log(response);
         this.products = this.products.concat(response.data);

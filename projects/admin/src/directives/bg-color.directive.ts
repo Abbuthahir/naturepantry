@@ -4,6 +4,7 @@ import { Directive, ElementRef, HostBinding, HostListener } from '@angular/core'
   selector: '[appBgColor]'
 })
 export class BgColorDirective {
+  // textColor: string | undefined;
 
   constructor(private element: ElementRef) {
     console.log('element', this.element);
@@ -12,12 +13,13 @@ export class BgColorDirective {
   @HostListener('mouseenter')
   onMouseEnter() {
     // this.changeBgColor('#000');
-    this.backgroundColor = '#000'
+    this.backgroundColor = '#000';
+    // this.textColor = '#fff'
   }
   @HostListener('mouseleave')
   onMouseLeave() {
     // this.changeBgColor('');
-    this.backgroundColor = ''
+    this.backgroundColor = '';
 
   }
   // changeBgColor(color: string) {

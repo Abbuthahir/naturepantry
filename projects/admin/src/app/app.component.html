@@ -1,40 +1,17 @@
-<nav class="navbar navbar-expand" style="background-color: rgba(8, 161, 8, 0.281);">
+ <nav class="navbar navbar-expand" style="background-color: rgba(8, 161, 8, 0.281);">
     <div class="container-fluid">
         <a class="navbar-brand" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"><b>Nature's
                 Pantry</b></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="offcanvas" href="#offcanvasExample">Categories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Feedback</a>
-                </li>
-            </ul>
-            <div>
-                <!-- Modal for add item -->
-                <button class="btn btn-outline-success mx-2" type="button" data-bs-toggle="modal"
-                    data-bs-target="#additemModal">Add Item</button>
-            </div>
-            <div>
-
-            </div>
+        
+            <button class="btn btn-outline-success mx-2" type="button" data-bs-toggle="modal"
+                data-bs-target="#additemModal">Add Item</button>
         </div>
     </div>
 </nav>
-<div class="card">
-    <div class="card-body" appBgColor>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magni molestias eos fugit ratione vero? Et totam
-        temporibus voluptatem corporis, modi dignissimos dicta quisquam similique, optio voluptate, soluta quidem
-        voluptas!
-    </div>
-</div>
-<!-- Modal for adding item -->
-<div class="modal fade" id="additemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+
+<div class="modal" id="additemModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -50,12 +27,12 @@
                                 [ngClass]="{'is-invalid':additemForm.controls['category'].invalid && additemForm.controls['category'].touched}"
                                 id="category" formControlName="category" aria-label="Select Category" required>
                                 <option selected disabled>Select Category</option>
-                                <option value="fruit">Fruit</option>
-                                <option value="vegetable">Vegetable</option>
-                                <option value="diary">Diary</option>
+                                <option value="Fruit">Fruit</option>
+                                <option value="Vegetable">Vegetable</option>
+                                <option value="Diary">Diary</option>
                                 <option value="Baked goods">Baked goods</option>
                                 <option value="Meat">Meat</option>
-                                <option value="herbs">Herbs</option>
+                                <option value="Herbs">Herbs</option>
                             </select>
                             <div class="invalid-feedback">Select the category</div>
                         </div>
@@ -91,9 +68,9 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <!-- <div>
                     <input type="file" (change)="toUpload($event)">
-                </div>
+                </div> -->
             </form>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -104,38 +81,30 @@
 </div>
 
 
-<!-- offcanvas for categories option -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header">
-        <h5 class="offcanvas-title mt-5" id="offcanvasExampleLabel" style="color:rgb(191, 202, 34);font-weight: bolder;
-        font-size: xx-large;text-shadow: 5px 3px 3px rgba(0, 0, 0, 0.5);">Product
-            Categories</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <hr>
-    <div class="offcanvas-body" style="font-size: x-large;">
-        <ul class="bulletin mt-5 " style="font-weight: bolder;">
-            <li class="" *ngFor="let type of types" (click)="goCategory(type.category)">{{type.category}}</li>
-        </ul>
+<!-- <div class="card">
+    <div class="card-body" appBgColor>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe magni molestias eos fugit ratione vero? Et totam
+        temporibus voluptatem corporis, modi dignissimos dicta quisquam similique, optio voluptate, soluta quidem
+        voluptas!
     </div>
 </div>
-<div class="container">
-    <div class="row" *ngIf="products.length">
+ Modal for adding item -->
+
+ <div class="container">
+    <div class="row">
         <div class="col col-md-4 d-flex justify-content-center align-items-center" *ngFor="let product of products">
             <div class="card shadow mx-5 mt-5" style="width: 18rem;">
                 <div class="card-body text-center">
                     <h3 style="text-align:center; font-family:Arial, Helvetica, sans-serif; font-style: italic;"><b>
                             {{product.Name}}</b></h3>
-                    <img [src]="product.imageurl" class="card-img-top" alt="..." height="400px" width="200px"
-                        style="object-fit: contain;">
+                    <img [src]="product.imageurl" class="card-img-top" alt="..."  height="400px" width="200px"
+                    style="object-fit: contain;">
                     <p class="text-center"><em>{{product.price}}</em></p>
-                    <div>{{product.id}}</div>
-                    <a class="btn btn-primary mx-2">Buy Now</a>
-                    <a class="btn btn-primary">Add to Cart</a>
+                    <p class="text-center"><em>{{product.id}}</em></p>
+                    <a class="btn btn-primary mx-2" (click)="toRemove(product.id)">Remove</a>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
-</div>
-
+</div> 
 <router-outlet></router-outlet>

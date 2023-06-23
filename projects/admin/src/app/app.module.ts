@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BgColorDirective } from '../directives/bg-color.directive';
+import { AdminService } from '../admin-service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { BgColorDirective } from '../directives/bg-color.directive';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
