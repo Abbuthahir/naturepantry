@@ -1,0 +1,22 @@
+.number-input-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  .number-input-row button {
+    margin-right: 0px;
+  }
+  .column {
+    position: relative;
+  }
+  
+  .column::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 1px;
+    background-color: #000; /* Adjust color as needed */
+  }
+  

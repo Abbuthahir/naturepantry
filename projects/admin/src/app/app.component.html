@@ -67,6 +67,15 @@
                             <div class="invalid-feedback"> Enter the price</div>
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="unit" class="form-label">Unit</label>
+                            <input [ngClass]="{'is-invalid':additemForm.controls['unit'].invalid && additemForm.controls['unit'].touched}"
+                             type="text" class="form-control" id="unit" formControlName="unit"
+                             placeholder="" required>
+                             <div class="invalid-feedback">Enter the unit</div>
+                        </div>
+                    </div>
                 </div>
                 <!-- <div>
                     <input type="file" (change)="toUpload($event)">
@@ -99,7 +108,7 @@
                             {{product.Name}}</b></h3>
                     <img [src]="product.imageurl" class="card-img-top" alt="..."  height="400px" width="200px"
                     style="object-fit: contain;">
-                    <p class="text-center"><em>{{product.price}}</em></p>
+                    <p class="text-center"><em>{{product.price | currency:'INR'}} ({{product.unit}})</em></p>
                     <p class="text-center"><em>{{product.id}}</em></p>
                     <a class="btn btn-primary mx-2" (click)="toRemove(product.id)">Remove</a>
                 </div>

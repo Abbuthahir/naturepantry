@@ -8,7 +8,7 @@
                             {{product.Name}}</b></h3>
                     <img [src]="product.imageurl" class="card-img-top" alt="..." height="400px" width="200px"
                         style="object-fit: contain;">
-                    <p class="text-center"><em>{{product.price}}</em></p>
+                    <p class="text-center"><em>{{product.price | currency: 'INR'}} ({{product.unit}})</em></p>
                     <!-- <div>{{product.id}}</div> -->
                     <a class="btn btn-primary mx-2">Buy Now</a>
                     <a class="btn btn-primary" (click)="addingToCart(product)">Add to Cart</a>

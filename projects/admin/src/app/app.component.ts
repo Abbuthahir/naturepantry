@@ -42,7 +42,8 @@ export class AppComponent {
       category: new FormControl('', Validators.required),
       Name: new FormControl('', Validators.required),
       imageurl: new FormControl('', Validators.required),
-      price: new FormControl('', Validators.required)
+      price: new FormControl('', Validators.required),
+      unit: new FormControl('', Validators.required)
     })
 
   }

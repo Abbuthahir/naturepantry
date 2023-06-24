@@ -4,14 +4,34 @@ import { DataService } from '../data.service';
 import {  OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BasePage } from '../core/base-page';
-
+import { trigger, transition, style, animate } from '@angular/animations';
 declare var $ : any;
 
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.scss']
+  styleUrls: ['./sign-in.component.scss'],
+  animations: [ 
+    trigger('imageAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.5)' }),
+        animate('500ms', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+    ]),
+    trigger('textAnimation', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(-100%)' }),
+        animate('500ms', style({ opacity: 1, transform: 'translateX(0)' })),
+      ]),
+    ]),
+    trigger('textAnimation2', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateX(100%)' }),
+        animate('500ms', style({ opacity: 1, transform: 'translateX(0)' })),
+      ]),
+    ]),
+  ],
 })
 export class SignInComponent extends BasePage {
   loginForm: FormGroup;

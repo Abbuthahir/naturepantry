@@ -1,0 +1,14 @@
+.welcome{
+    color: red;
+    font-size: 50px;
+    font-weight: bolder;
+    font-style: italic;
+}
+.pantry{
+    font-size: 60px;
+    font-weight: bolder;
+    background: -webkit-linear-gradient(rgb(188,12,241), rgb(212,4,4,));
+    // background-clip: border-box;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}  

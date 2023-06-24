@@ -11,7 +11,7 @@ import { DataService } from '../data.service';
 })
 export class ProductCategoriesComponent extends BasePage {
   products: any = [];
-  cartData: any[] = [];
+  cart: any[] = [];
   category: any;
   routeParams$: Observable<any>;
   constructor(private homeService: DataService, private cdr: ChangeDetectorRef, private route: ActivatedRoute) {
@@ -32,12 +32,16 @@ export class ProductCategoriesComponent extends BasePage {
           );
       })
   );
+  const cartData: any = this.homeService.getCart();
+    if (cartData) {
+      this.cart = this.cart.concat(cartData);
   }
+}
   addingToCart(data: any) {
     const cartItems: any = this.homeService.getCart();
     if (cartItems) {
-      this.cartData.push(data);
+      this.cart.push(data);
     }
-    this.homeService.addCart(this.cartData);
+    this.homeService.addCart(this.cart);
   }
 }

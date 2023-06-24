@@ -1,32 +1,48 @@
-<!-- <app-navbar></app-navbar> -->
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col col-md-4 d-flex justify-content-center align-items-center"
-            *ngFor="let product of products">
-            <div class="card shadow mx-5 mt-5" style="width: 18rem;">
-                <div class="card-body">
-                    <h3 style="text-align:center; font-family:Arial, Helvetica, sans-serif; font-style: italic;"><b>
-                            {{product.Name}}</b></h3>
-                    <img [src]="product.imageurl" class="card-img-top mx-4" alt="..." style="height: 300px; width: 200px;">
-                    <p class="text-center"><em>{{product.price}}</em></p>
-                    <div>{{product.id}}</div>
-                    <a class="btn btn-primary mx-2">Buy Now</a>
-                    <a class="btn btn-primary">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
-
 <div class="row">
-  <div class="col">
-    <marquee class="marquee mb-3 mt-5"scrollamount="8" style="font-weight: bolder;color:rgb(191, 202, 34)">
-      <h1><i>"Let medicine be the food, the food  shall be Nature's Pantry's food"</i></h1>
-    </marquee>
-    <img src="../../assets/natures-pantry-24-hour-comfort-kit.jpg" class="mt-4">
+  <div class="col-6">
+    <div class="container">
+      <marquee class="marquee mb-3 mt-5" scrollamount="8" style="font-weight: bolder;color:red">
+        <h1><i>"Let medicine be the food, the food shall be Nature's Pantry's food"</i></h1>
+      </marquee>
+      <img src="../../assets/natures-pantry-24-hour-comfort-kit.jpg" class="mt-4" [@imageAnimation]>
+    </div>
   </div>
-  <div class="col">hello</div>
+  <div class="col-6">
+    <div class="container">
+      <div class="card shadow mt-5">
+        <div class="card-body text-center">
+          <div class="card-header mb-3" style="color: green; font: 30px bolder;">
+            <img src="../../assets/person-lines-fill.svg" alt="" height="50px">
+            Contact Us
+          </div>
+          <ul>
+            <li>
+              <a href="https://www.linkedin.com/feed/?trk=seo-authwall-base_google-one-tap-submit" target="_blank">
+                <img src="../../assets/linkedin.svg" alt="" width="40px" height="40px"></a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="https://github.com/Abbuthahir" target="_blank">
+                <img src="../../assets/github.svg" alt="" width="40px" height="40px"></a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="" target="_blank">
+                <img src="../../assets/phone-vibrate.svg" alt="" width="40px" height="40px">
+              </a>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <a href="https://www.google.com/maps/place/Adaptive+Media/@8.6661213,77.7162391,16.12z/data=!4m6!3m5!1s0x3b04120e8a23257b:0x9b168fc9769f8144!8m2!3d8.666579!4d77.7180804!16s%2Fg%2F11f3f9rd_0?entry=ttu"
+                target="_blank">
+                <img src="../../assets/geo-alt-fill.svg" alt="" width="40px" height="40px"></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
