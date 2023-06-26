@@ -21,10 +21,6 @@ const routes: Routes = [
     path: 'categories/:id',
     loadChildren: () => import('./product-categories/product-categories.module').then(m => m.ProductCategoriesModule)
   },
-  // {
-  //   path: 'admin',
-  //   loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
-  // },
   {
     path: 'feedback',
     loadChildren: () => import('./feedback/feedback.module').then(m => m.FeedbackModule)

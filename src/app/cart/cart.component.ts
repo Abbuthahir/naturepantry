@@ -16,16 +16,6 @@ export class CartComponent extends BasePage {
     this.current.data = 'home';
     console.log(this.homeService.getCart());
     this.cartData = this.homeService.getCart();
-    //     let cartDatas = homeService.getCart();
-    //     if (cartDatas) {
-    //       this.homeService.cartData = [];
-    //       cartDatas.forEach((cartData: any) => {
-    // this.homeService.cartData.concat(cartData);
-    //       });
-    //       }else{
-    //         this.homeService.cartData.push(this.homeService.cartData);
-    //       }
-    //         console.log('cartData', this.homeService.cartData);
     // let cartDatas = homeService.getCart();
     // if (cartDatas) {
     //   this.homeService.cartData = [];
@@ -37,25 +27,25 @@ export class CartComponent extends BasePage {
     // else {
     //   this.homeService.cartData.push(this.homeService.cartData);
     // }
-    if (this.homeService.cartData.length) {
-      // this.total = this.homeService.cartData[0].price;
-    }
   }
   removeCart(i: any) {
-    this.homeService.cartData.splice(i, 1);
-    this.homeService.addCart(this.homeService.cartData);
-  }
-  increaseNumber() {
-    // this.numberValue++;
-  }
-  decreaseNumber() {
-    // this.numberValue--;
+    this.cartData.splice(i, 1);
+    this.homeService.addCart(this.cartData);
   }
   quantity(event: any, i: any) {
     // console.log(event);
-console.log(event.target.value);
+    const quantity = event.target.value;
+    this.cartData[i].quantity = quantity;
     this.cartData[i].totalPrice = this.cartData[i].price * event.target.value;
 
     //  this.total = this.homeService.cartData[i].price * this.numberValue;
   }
+  grandTotal(): number {
+    let totalAmount = 0;
+    for (let cart of this.cartData) {
+      totalAmount += cart.totalPrice;
+    }
+    return totalAmount;
+  }
+  
 }
