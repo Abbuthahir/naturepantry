@@ -40,7 +40,11 @@ export class ProductCategoriesComponent extends BasePage {
   addingToCart(data: any) {
     const cartItems: any = this.homeService.getCart();
     if (cartItems) {
-      this.cart.push(data);
+      data.quantity = 1;
+      data.totalPrice = data.price;
+      this.cart = this.cart.concat(data);
+    }else{
+      this.cart.push(data)
     }
     this.homeService.addCart(this.cart);
   }
