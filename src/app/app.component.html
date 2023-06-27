@@ -36,7 +36,7 @@
     <hr>
     <div class="offcanvas-body" style="font-size: x-large;">
         <ul class="bulletin mt-5 " style="font-weight: bolder;">
-            <li class="" *ngFor="let type of types" (click)="goCategory(type.value)">{{type.category}}</li>
+            <li class="" *ngFor="let type of types" (click)="goCategory(type.value)" style="cursor: pointer;"><u>{{type.category}}</u></li>
         </ul>
     </div>
 </div>
