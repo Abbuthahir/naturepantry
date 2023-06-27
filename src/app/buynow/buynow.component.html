@@ -5,7 +5,7 @@
             <div class="card shadow">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-lg-4 col-md-6">
+                        <div class="col-lg-5 col-md-6">
                             <div class="container">
                                 <div class="card shadow">
                                     <div class="card-body">
@@ -36,10 +36,16 @@
                                         </div>
                                         <button class="btn btn-danger" routerLink="/cart/:id">Cancel</button>
                                     </div>
+                                    <div class="card-footer">
+                                        <div class="col-4" style="font-size: 20px; color: rgb(202, 202, 24);"><b>Total</b></div>
+                                        <div class="col-3">
+                                            <p><em>{{ grandTotal() | currency:'INR' }}</em></p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-8 col-md-6">
+                        <div class="col-lg-7 col-md-6">
                             <div *ngIf="selectedOption === upi">
                                 <h3>UPI payment</h3>
                                 <div>
@@ -49,7 +55,7 @@
                             <div *ngIf="selectedOption === creditCard">
                                 <h3>Credit/Debit Card</h3>
                                 <div class="form-group mt-4" [formGroup]="creditCardForm">
-                                    <div>
+                                    <div class="mb-3">
                                         <label for="cardNumber">Card Number</label>
                                         <input type="text" id="cardNumber" class="form-control" maxlength="19"
                                             (input)="formatCardNumber($event)" pattern="[0-9]*"
@@ -57,7 +63,7 @@
                                             formControlName="cardNumber" placeholder="Enter your card Number" required>
                                         <div class="invalid-feedback"> Enter your card Number</div>
                                     </div>
-                                    <div>
+                                    <div class="mb-3">
                                         <label for="holderName">Card Holder Name</label>
                                         <input type="text" id="holderName" class="form-control"
                                             [ngClass]="{'is-invalid':creditCardForm.controls['holderName'].invalid && creditCardForm.controls['holderName'].touched}"
@@ -65,7 +71,7 @@
                                             required>
                                         <div class="invalid-feedback"> Enter your card Number</div>
                                     </div>
-                                    <div>
+                                    <div class="mb-3">
                                         <label for="cvv">cvv</label>
                                         <input type="text" id="cvv" class="form-control" maxlength="3"
                                             (input)="formatCardNumber($event)" pattern="[0-9]*" formControlName="cvv"
@@ -73,11 +79,12 @@
                                             placeholder="Enter your cvv" required>
                                         <div class="invalid-feedback"> Enter your cvv Number</div>
                                     </div>
-                                    <div>
+                                    <div class="mb-3">
                                         <label for="mobileNumber">Mobile Number</label>
-                                        <input type="text" id="mobileNumber" class="form-control" formControlName="mobileNumber"
-                                        [ngClass]="{'is-invalid':creditCardForm.controls['mobileNumber'].invalid && creditCardForm.controls['mobileNumber'].touched}"
-                                        placeholder="Enter your mobile number" required>
+                                        <input type="text" id="mobileNumber" class="form-control"
+                                            formControlName="mobileNumber"
+                                            [ngClass]="{'is-invalid':creditCardForm.controls['mobileNumber'].invalid && creditCardForm.controls['mobileNumber'].touched}"
+                                            placeholder="Enter your mobile number" required>
                                         <div class="invalid-feedback"> Enter your Mobile Number</div>
                                     </div>
                                 </div>
@@ -85,14 +92,17 @@
                             <div *ngIf="selectedOption === cashOnDelivery">
                                 <h3>COD Payment</h3>
                                 <div class="mb-2">
-                                <label for="houseNo">House Number:</label>
-                                <input type="text" id="houseNo" class="form-control"></div>
+                                    <label for="houseNo">House Number:</label>
+                                    <input type="text" id="houseNo" class="form-control">
+                                </div>
                                 <div class="mb-2">
-                                <label for="street">Street Name:</label>
-                                <input type="text" id="street" class="form-control"></div>
+                                    <label for="street">Street Name:</label>
+                                    <input type="text" id="street" class="form-control">
+                                </div>
                                 <div class="mb-2">
-                                <label for="city">City Name:</label>
-                                <input type="text" id="city" class="form-control"></div>
+                                    <label for="city">City Name:</label>
+                                    <input type="text" id="city" class="form-control">
+                                </div>
                                 <div class="row">
                                     <div class="col">
                                         <label for="district">District:</label>
@@ -100,7 +110,8 @@
                                     </div>
                                     <div class="col">
                                         <label for="pincode">Pincode:</label>
-                                        <input type="text" id="pincode" class="form-control" maxlength="6" pattern="[0-9]*">
+                                        <input type="text" id="pincode" class="form-control" maxlength="6"
+                                            pattern="[0-9]*">
                                     </div>
                                 </div>
                             </div>
@@ -110,5 +121,6 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3"></div>
+    <div class="col-md-3">
+    </div>
 </div>
