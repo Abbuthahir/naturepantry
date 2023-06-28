@@ -31,7 +31,9 @@ export class ProductCategoriesComponent extends BasePage {
             }
           );
       })
-  );
+      
+      );
+      console.log('hiii');
   const cartData: any = this.homeService.getCart();
     if (cartData) {
       this.cart = this.cart.concat(cartData);
