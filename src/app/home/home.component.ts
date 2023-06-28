@@ -23,6 +23,12 @@ declare var bootstrap: any;
       state('back', style({ transform: 'rotateY(-180deg)' })),
       state('left', style({ transform: 'rotateY(-270deg)' })),
       transition('* <=> *', animate('500ms ease-in-out'))
+    ]),
+     trigger('slideUpAnimation', [
+      state('void', style({ transform: 'translateY(100%)', opacity: 0 })),
+      transition(':enter', [
+        animate('1000ms ease-out', style({ transform: 'translateY(0)', opacity: 1 }))
+      ])
     ])
   ]
 })

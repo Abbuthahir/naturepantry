@@ -33,12 +33,11 @@ export class CartComponent extends BasePage {
     this.homeService.addCart(this.cartData);
   }
   quantity(event: any, i: any) {
-    // console.log(event);
+     console.log(event);
     const quantity = event.target.value;
+    console.log('quantity', quantity);
     this.cartData[i].quantity = quantity;
-    this.cartData[i].totalPrice = this.cartData[i].price * event.target.value;
-
-    //  this.total = this.homeService.cartData[i].price * this.numberValue;
+    this.cartData[i].totalPrice = this.cartData[i].price * quantity;
   }
   grandTotal(): number {
     let totalAmount = 0;
