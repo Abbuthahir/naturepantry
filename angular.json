@@ -17,6 +17,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "qrcode",
+              "moment-timezone"
+            ],
             "outputPath": "dist/naturepantry",
             "index": "src/index.html",
             "main": "src/main.ts",

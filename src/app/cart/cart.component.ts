@@ -12,6 +12,8 @@ export class CartComponent extends BasePage {
   cartData: any[] = [];
   constructor(public homeService: DataService) {
     super();
+    console.log('types', this.types);
+    
     this.current.nav = true;
     this.current.data = 'home';
     console.log(this.homeService.getCart());

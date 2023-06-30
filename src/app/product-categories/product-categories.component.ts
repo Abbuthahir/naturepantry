@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import { Base } from '../core/base';
 import { BasePage } from '../core/base-page';
 import { DataService } from '../data.service';
 @Component({
@@ -9,7 +10,7 @@ import { DataService } from '../data.service';
   styleUrls: ['./product-categories.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductCategoriesComponent extends BasePage {
+export class ProductCategoriesComponent extends Base{
   products: any = [];
   cart: any[] = [];
   category: any;

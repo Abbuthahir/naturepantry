@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import * as moment from 'moment-timezone';
 import { BasePage } from '../core/base-page';
 
-
 @Component({
   selector: 'app-feedback',
   templateUrl: './feedback.component.html',
