@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BasePage } from '../core/base-page';
 import { DataService } from '../data.service';
 
@@ -7,7 +7,7 @@ import { DataService } from '../data.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent extends BasePage {
+export class CartComponent extends BasePage implements OnInit {
   numberValue: any = 1;
   cartData: any[] = [];
   constructor(public homeService: DataService) {
@@ -29,18 +29,25 @@ export class CartComponent extends BasePage {
     // else {
     //   this.homeService.cartData.push(this.homeService.cartData);
     // }
+    this.grandTotal();
   }
   removeCart(i: any) {
     this.cartData.splice(i, 1);
     this.homeService.addCart(this.cartData);
   }
-  quantity(event: any, i: any) {
-     console.log(event);
-    const quantity = event.target.value;
-    console.log('quantity', quantity);
-    this.cartData[i].quantity = quantity;
-    this.cartData[i].totalPrice = this.cartData[i].price * quantity;
+  ngOnInit(){
+    for (let i = 0; i < this.cartData.length; i++) {
+      const event = { target: { value: this.cartData[i].quantity }};
+      this.quantity(event, i);
+    }
   }
+  quantity(event: any, i: any) {
+      console.log(event);
+     const quantity = event.target.value;
+     console.log('quantity', quantity);
+     this.cartData[i].quantity = quantity;
+     this.cartData[i].totalPrice = this.cartData[i].price * quantity;
+   }
   grandTotal(): number {
     let totalAmount = 0;
     for (let cart of this.cartData) {

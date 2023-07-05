@@ -33,7 +33,6 @@ export class ProductCategoriesComponent extends Base{
           );
       })
       );
-      console.log('hiii');
   const cartData: any = this.homeService.getCart();
     if (cartData) {
       this.cart = this.cart.concat(cartData);
