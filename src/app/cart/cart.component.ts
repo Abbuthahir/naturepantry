@@ -9,11 +9,11 @@ import { DataService } from '../data.service';
 })
 export class CartComponent extends BasePage implements OnInit {
   numberValue: any = 1;
+  qty = 1;
   cartData: any[] = [];
   constructor(public homeService: DataService) {
     super();
     console.log('types', this.types);
-    
     this.current.nav = true;
     this.current.data = 'home';
     console.log(this.homeService.getCart());

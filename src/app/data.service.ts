@@ -28,6 +28,8 @@ export class DataService extends BasePage {
     return this.http.delete(`http://localhost:3001/programming-languages/${id}`)
   }
   addCart(product: any){
+    console.log('abbu', product);
+    
      let carts = JSON.stringify(product);
      localStorage.setItem('cart', carts);
   }

@@ -39,6 +39,7 @@ export class ProductCategoriesComponent extends Base{
   }
 }
   addingToCart(data: any) {
+    data.quantity = 1;
     const cartItems: any = this.homeService.getCart();
     if (cartItems) {
       data.quantity = 1;
