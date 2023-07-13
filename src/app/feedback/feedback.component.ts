@@ -47,5 +47,9 @@ export class FeedbackComponent extends BasePage {
     console.log('find', f);
     this.selectedFind = f;
   }
+
+  alert(){
+    window.alert('Your response was recorded');
+  }
 }
 
